@@ -8,10 +8,12 @@ COPY ["RabbitMQListener/RabbitMQListener.csproj", "RabbitMQListener/"]
 RUN dotnet restore "RabbitMQListener/RabbitMQListener.csproj"
 COPY . .
 WORKDIR "/src/RabbitMQListener"
-RUN dotnet build "D:/Github/RabbitMQ Linux/RabbitMQListener/RabbitMQListener/RabbitMQListener.csproj" -c Release -o /app/build
+#RUN dotnet build "D:/Github/RabbitMQ Linux/RabbitMQListener/RabbitMQListener/RabbitMQListener.csproj" -c Release -o /app/build
+RUN dotnet build "RabbitMQListener.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "D:/Github/RabbitMQ Linux/RabbitMQListener/RabbitMQListener/RabbitMQListener.csproj" -c Release -o /app/publish
+#RUN dotnet publish "D:/Github/RabbitMQ Linux/RabbitMQListener/RabbitMQListener/RabbitMQListener.csproj" -c Release -o /app/publish
+RUN dotnet publish "RabbitMQListener.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
