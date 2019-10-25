@@ -25,7 +25,9 @@ namespace RabbitMQListener.RabbitMQ
     public class RabbitMQPersistentConnection : IRabbitMQPersistentConnection
     {
         private readonly IConnectionFactory _connectionFactory;
-        EventBusRabbitMQ _eventBusRabbitMQ;
+        EventBusRabbitMQ _eventBusRabbitMQLeads;
+        EventBusRabbitMQ _eventBusRabbitMQPerformanceTest7;
+        EventBusRabbitMQ _eventBusRabbitMQPerformanceTest8;
         IConnection _connection;
         bool _disposed;
 
@@ -46,8 +48,14 @@ namespace RabbitMQListener.RabbitMQ
             }
 
             //Create Queue
-            _eventBusRabbitMQ = new EventBusRabbitMQ(this, RabbitMQSetting.queueName);
-            _eventBusRabbitMQ.CreateConsumerChannel();
+            _eventBusRabbitMQLeads = new EventBusRabbitMQ(this, RabbitMQSetting.queueNameLeads);
+            _eventBusRabbitMQLeads.CreateConsumerChannel();
+
+            _eventBusRabbitMQPerformanceTest7 = new EventBusRabbitMQ(this, RabbitMQSetting.queueNamePerformanceTest7);
+            _eventBusRabbitMQPerformanceTest7.CreateConsumerChannel();
+
+            _eventBusRabbitMQPerformanceTest8 = new EventBusRabbitMQ(this, RabbitMQSetting.queueNamePerformanceTest8);
+            _eventBusRabbitMQPerformanceTest8.CreateConsumerChannel();
         }
 
         public void Disconnect()

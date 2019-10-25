@@ -11,7 +11,9 @@ namespace RabbitMQListener
         //public static string username = "admin";
         //public static string password = "indocyber";
         //public static string exchangeName = "LOS.E.Direct.Leads";
-        public static string queueName = "LOS.Q.Leads";
+        public static string queueNameLeads = "LOS.Q.Leads";
+        public static string queueNamePerformanceTest7 = "LOS.Q.PerformanceTest.7";
+        public static string queueNamePerformanceTest8 = "LOS.Q.PerformanceTest.8";
         //public static string routingKey = "Leads";
         //public static string message = "Test Leads";
     }
