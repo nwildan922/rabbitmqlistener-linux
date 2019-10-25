@@ -38,8 +38,8 @@ namespace RabbitMQListener.RabbitMQ
                 var message = Encoding.UTF8.GetString(body);
                 //Console.WriteLine($"Filename : {message} berhasil di save");
                 BFIHelper.GetWorklist(message);
+                
             };
-
 
             channel.BasicConsume(queue: _queueName, autoAck: true, consumer: consumer);
             channel.CallbackException += (sender, ea) =>
